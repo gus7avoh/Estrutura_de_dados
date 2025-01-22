@@ -5,7 +5,7 @@
 
 //criar o elemento 
 circulo::circulo(){
-    clock.reserve(max_itens);
+    //clock.reserve(max_itens);
 }
 
 //verifica o tamanho do relogio
@@ -15,53 +15,56 @@ int circulo::currently(){
 
 //verifica o tamanho do relogio
 int circulo::first(){
-    return fi%max_itens;
+    return fi%max_itens; // indica a posicao que atualmente é o primeiro elemento 
 }
 
-void circulo::nowplus(){
+void circulo::nowplus(){ // toda vez que eu adicionar um elemento esse deve ser incrementado para que o currently avance
     now++;
 }
 
-void circulo::fiplus(){
+void circulo::fiplus(){ // toda vez que eu remover um elemento esse deve ser incrementado para que o first avance
     fi++;
 }
 
 //adicionar um elemento ao relogio
 void circulo::push(int value){
-   start = 1;
    if(isfull()){
         cout << "Nao eh possivel adicionar mais nada" << endl;
    }else{
-        if(value == 00){
-            clock[currently()] = 0;
-        }else{
-            clock[currently()] == value;
-            nowplus();
-        }        
+        //cout << "A real posição inserida foi: " << *(clock.begin() + first()) << endl;
+        clock.insert(clock.begin() + currently(), value);
+        //clock [ currently()] = value;
+        nowplus();
+        start = 1;
    }
 }
+
+
+
+
+
 
 //remover um elemento do relogio
 int circulo::pop(){
     if(isempty()){
         cout << "nao eh possivel remover mais nada" << endl;
     }else{
-        clock[first()] = 00;
+        cout << "A real posição inserida foi: " << *(clock.begin() + first()) << endl;
+        clock.erase(clock.begin() + first());
         fiplus();
     }
-
 }
 
 //verificar se o relogio está cheio
 bool circulo::isfull(){
-   if (start != 0){
+    if (start == 0){
+        return false;
+    }else{
         if (currently() == first()){
-            return true;
+        return true;
         }else{
             return false;
         }
-    }else{
-        return false;
     }
 }
 
@@ -75,24 +78,14 @@ bool circulo::isempty(){
 }
 
 int circulo::length(){ /// se o numero for diferente de 00 vou contar como um numero 
-    int number;
-    for(int i : clock){
-        if (i != 00){
-            number++;
-        }
-    return number;
-    }
+   return clock.size();
 }
 
 void circulo::print(){
     cout << "[";
-    for (int i = 0; i <= 5; i++){     
-        if (i != 00){
-            cout << clock[i] << " ";
-        } 
+      for (int valor : clock) {
+        cout << valor << " ";
     }
     cout << "]";
 }
 
- //// o relogio esta apontando sempre cheio para novos dados 
- //// o print está mostarando 0 para os valores vazios

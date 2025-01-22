@@ -21,6 +21,8 @@ int main(){
                 value = getNumber("Digite o valor que deseja adicionar: ");
                 queue.push(value);
                 queue.print();
+                cout << "\n\ncurrently: "<< queue.currently() <<  endl;   
+                cout << "first: "<< queue.first() <<  endl;
                 if(!ask()){
                     break;
                 }
@@ -33,6 +35,8 @@ int main(){
             cout << "Removendo o elemento do relogio..." << endl;
             queue.pop();
             queue.print();
+            cout << "\n\ncurrently: "<< queue.currently() <<  endl;
+            cout << "first: "<< queue.first() <<  endl;
             cout << "\n" << endl;
             break;
 

@@ -8,8 +8,9 @@ class circulo{
         const int max_itens = 5;
         int now = 5;
         int fi = 5;
-        vector <int> clock {00,00,00,00,00};
+        vector <int> clock;
         int start = 0;
+        
 
     public:
 

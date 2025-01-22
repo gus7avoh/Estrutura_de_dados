@@ -57,7 +57,7 @@ int menu() {
     do {
         cout << "0 - Parar o programa\n";
         cout << "1 - Adicionar um valor ao relogio" << endl;
-        cout << "2 - Remover um valor ao relogio" << endl;
+        cout << "2 - Remover um valor do relogio" << endl;
         cout << "3 - Ver o relogio" << endl;
         cout << "4 - Tamanho do relogio" << endl;
         indice = getNumber("--> ");

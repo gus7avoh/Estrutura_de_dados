@@ -3,12 +3,15 @@
 using namespace std;
 
 int main(){
-    vector <int> vetor;
-    vetor.reserve(5);
-    vetor[0] = 0;
-    for (int i =0 ; i< 5 ; i++ ){
-        cout << vetor[i] << " ";
-    }
-    cout << "\n terminou" << endl;
+
+vector < int> oi;
+oi[0] = 1;
+oi[1] = 2;
+oi[2] = 3;
+
+for ( int a : oi){
+    cout <<  a << " ";
+}
+
     return 0;
 }
