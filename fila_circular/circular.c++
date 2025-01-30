@@ -2,6 +2,7 @@
 #include <vector>
 #include "circular.h"
 #include <string>
+#include <optional>
 
 //criar o elemento 
 circulo::circulo(){
@@ -31,7 +32,9 @@ void circulo::push(int value){
    if(isfull()){
         cout << "Nao eh possivel adicionar mais nada" << endl;
    }else{
-        //cout << "A real posição inserida foi: " << *(clock.begin() + first()) << endl;
+   // if (start == 1){
+       // cout << "A real posição inserida foi: " << *(clock.begin() + first()) << endl; 
+  //  }
         clock.insert(clock.begin() + currently(), value);
         //clock [ currently()] = value;
         nowplus();
@@ -45,12 +48,15 @@ void circulo::push(int value){
 
 
 //remover um elemento do relogio
-int circulo::pop(){
+void circulo::pop(){
     if(isempty()){
         cout << "nao eh possivel remover mais nada" << endl;
     }else{
-        cout << "A real posição inserida foi: " << *(clock.begin() + first()) << endl;
-        clock.erase(clock.begin() + first());
+        //if (start == 1){
+       // cout << "A real posição inserida foi: " << *(clock.begin() + first()) << endl;
+   // }
+        //clock.erase(clock.begin() + first());
+        clock[first()] = nullopt; 
         fiplus();
     }
 }
@@ -83,9 +89,12 @@ int circulo::length(){ /// se o numero for diferente de 00 vou contar como um nu
 
 void circulo::print(){
     cout << "[";
-      for (int valor : clock) {
-        cout << valor << " ";
-    }
+      for (const auto& val : clock) {
+        if (val.has_value())
+            std::cout << val.value() << " ";
+        else
+            cout << " ";
+        }
     cout << "]";
 }
 

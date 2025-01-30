@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <optional>
 
 using namespace std;
 
@@ -8,7 +9,7 @@ class circulo{
         const int max_itens = 5;
         int now = 5;
         int fi = 5;
-        vector <int> clock;
+        vector <optional<int>> clock;
         int start = 0;
         
 
@@ -28,7 +29,7 @@ class circulo{
 
         void push(int value);
 
-        int pop();
+        void pop();
 
         bool isfull();
 
